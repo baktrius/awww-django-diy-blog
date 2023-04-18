@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 
 from django.views import generic
-from .models import BlogAuthor  #, Blog, BlogComment
+from .models import BlogAuthor, Blog, BlogComment
 from django.contrib.auth.models import User #Blog author or commenter
 
 
@@ -19,8 +19,16 @@ def index(request):
     )
     
 
-# TODO: Create Views for BlogList, BlogDetailView
-    
+# TODO: Create Views for BlogDetailView
+
+class BlogListView(generic.ListView):
+    """
+    Generic class-based view for a list of all blogs.
+    """
+    model = Blog
+    paginate_by = 5
+
+
 class BloggerListView(generic.ListView):
     """
     Generic class-based view for a list of bloggers.
