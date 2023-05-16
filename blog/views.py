@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.views import generic
 from .models import BlogAuthor, Blog, BlogComment
 from django.contrib.auth.models import User #Blog author or commenter
+from django.http import JsonResponse
 
 
 def index(request):
@@ -68,8 +69,11 @@ class BlogDetailView(CreateView):
         form.instance.author = self.request.user
         #Associate comment with blog based on passed id
         form.instance.blog=get_object_or_404(Blog, pk = self.kwargs['pk'])
-        # Call super-class form validation behaviour
-        return super(BlogDetailView, self).form_valid(form)
+        print(form.instance)
+        form.instance.save()
+        return JsonResponse({'success':True, 'data': form.instance.data()})
+
+
 
     def get_success_url(self): 
         """

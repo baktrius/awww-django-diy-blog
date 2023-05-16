@@ -4,19 +4,17 @@
 Task is modified version of MSD assessment. Details below.
 
 ## Task overview
-1. Read original task overview at [MDN assessment page](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/django_assessment_blog)
+1. This task builds up on previous one so if you haven't done it, and you get lost, maybe check it out (awww1 branch)
 2. Clone this repository from github to your local drive.
-3. Checkout awww1 branch
+3. Checkout awww2 branch
 4. Follow setup instructions from Quick Start section (below)
-5. Tests shouldn't pass, but you should be able to visit index page and bloggers list
-6. Create models Blog and BlogComment according to task description
-7. Check that tests from test_model.py are satisfied
-8. Add created models to admin (check that you are successful)
-9. Create View displaying list of blogs using generic.ListView (appropriate template should be created)
-10. Make appropriate changes to urls.py and check that your list is displaying correctly
-11. Create merged view for both displaying article and its comments and adding new comments (user authentication isn't required). You can find previous templates in template directory
+5. During previous iteration i messed up code performing commenting. I cheated and used CreateView for both showing post details and adding comments. Thats why endpoint `/blog/blog/<blogId>` shows post description (when GET http method is used) and add comment (when POST http method is used). That's not very nice, but what can you do not? I changed POST part of endpoint `/blog/blog/<blogId>` so that on success instead of redirect it returns json. Inspect returned json format (how to do this? - tip don't try to be very smart).
+6. Fill in `blog/static/scripts/comment.js` so that
+   a) appropriate request is send using ajax
+   b) page is updated after request succeeds (without reloading)
+   c) use date returned from django, possibly don't modify other code (then `comment.js`)
 
-If you get stuck anywhere along the road I suggest checking this commit changes as they explicitly highlight what I have deleted from fully working example to create this task. And of course you are welcome to ask me questions.
+If you get stuck anywhere along the road you are welcome to ask me questions.
 
 
 Basic blog site written in Django (part of MDN Django module assessment)

@@ -80,6 +80,9 @@ class BlogComment(models.Model):
         else:
             titlestring=self.description
         return titlestring
+    
+    def data(self):
+        return {'id': self.pk, 'description': self.description, 'author': self.author.username, 'post_date': str(self.post_date)}
 
 
 
